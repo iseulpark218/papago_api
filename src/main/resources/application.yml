@@ -1,0 +1,38 @@
+spring:
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password: 
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    op en-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: create
+  devtools:
+    livereload:
+      enabled: true
+    freemarker:
+      cache: false
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true #httpmethod관련, put/delete
+translation:
+  url:
+    naver: https://dict.naver.com/name-to-roman/translation/?query=박이슬
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: TRACE
