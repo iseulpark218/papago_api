@@ -26,7 +26,9 @@ spring:
         enabled: true #httpmethod관련, put/delete
 translation:
   url:
-    naver: https://dict.naver.com/name-to-roman/translation/?query=박이슬
+    pusan: http://roman.cs.pusan.ac.kr/result_all.aspx?input=
+    naver: https://dict.naver.com/name-to-roman/translation/?query=
+    naver_address: https://search.naver.com/search.naver?where=nexearch&ie=utf8&X_CSA=address_search&query=
 #logging:
 #  level:
 #    org:
