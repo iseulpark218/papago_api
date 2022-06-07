@@ -2,6 +2,7 @@ package net.ecplaza.ksdata.translation;
 
 import lombok.AllArgsConstructor;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -19,7 +20,7 @@ public class TranslationController {
 	public String home() {
 //		아래 encode테스트
 		String text;
-		String korean = "안녕하세요";
+		String korean = "안녕하세요, translation home입니다.";
 		try {
 			text = URLEncoder.encode(korean, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -84,24 +85,21 @@ public class TranslationController {
 		return "translation/ceo";
 	}
 
+	// 잠시주석
 	@GetMapping("/translation/ceo/result")
 	public String ceoTranslationForm(
 			@RequestParam(value = "keyword2", required = false, defaultValue = "") String keyword2, Model model) {
 		try {
 			String result = translationService.getCeoTranslation(keyword2);
-			if (result.equals("")) {
-				model.addAttribute("result", "입력해주세요.");
-			} else {
-				model.addAttribute("result", result);
-			}
+			model.addAttribute("result", result);
 		} catch (Exception e) {
+			model.addAttribute("result", "입력해주세요.");
 			e.printStackTrace();
 		}
 		return "translation/ceo";
 	}
 
-	
-//	주소 번역
+//	주소 번역 (경기->경기도 변경해야함)
 	@GetMapping("/translation/address")
 	public String addressTranslationForm() {
 		return "translation/address";
@@ -112,12 +110,9 @@ public class TranslationController {
 			@RequestParam(value = "keyword3", required = false, defaultValue = "") String keyword3, Model model) {
 		try {
 			String result = translationService.getAddressTranslation(keyword3);
-			if (result.equals("")) {
-				model.addAttribute("result", "입력해주세요.");
-			} else {
-				model.addAttribute("result", result);
-			}
+			model.addAttribute("result", result);
 		} catch (Exception e) {
+			model.addAttribute("result", "입력해주세요.");
 			e.printStackTrace();
 		}
 		return "translation/address";
